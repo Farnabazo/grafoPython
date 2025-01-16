@@ -17,3 +17,6 @@ class Nodo:
     
     def addListaAdiacenza(self, newNodo):
         self.listaAdiacenza.append(newNodo)
+
+    def isEqual(self, x):
+        return self.cont == x.cont

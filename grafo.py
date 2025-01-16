@@ -18,25 +18,31 @@ class Grafo:
         #e che non sia già presente il nuovo nodo
 
         for n in range(len(self.listaNodi)):
-            x = self.listaNodi[n].getCont()
-            if newNodo.getCont() == x:
+            x = self.listaNodi[n]
+
+            if newNodo.isEqual(x):
                 checkNewNodo = True
-            if x == oldNodo.getCont():
+
+            if oldNodo.isEqual(x):
                 break
 
             #se raggiungo l'ultimo nodo della lista e comunque è diverso dal nodo passato come oldNodo, allora so che non è presente
 
-            elif x != oldNodo.getCont() and n == len(self.listaNodi):
+            elif not oldNodo.isEqual(x) and n == len(self.listaNodi):
                 print("Il nodo adiacente non è presente")
                 return
-        self.size += 1
+
         if checkNewNodo == False:
             self.listaNodi.append(newNodo)
+            self.size += 1
 
         #essendo il grafo non orientato, (x -> y) implica sempre (y -> x)
 
-        newNodo.addListaAdiacenza(oldNodo)
-        oldNodo.addListaAdiacenza(newNodo) 
+        if not newNodo in oldNodo.getListaAdiacenza():
+            oldNodo.addListaAdiacenza(newNodo)
+
+        if not oldNodo in newNodo.getListaAdiacenza():
+            newNodo.addListaAdiacenza(oldNodo) 
 
 
         
