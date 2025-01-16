@@ -8,17 +8,6 @@ nodo3 = Nodo(3)
 g = Grafo(nodo1)
 g.addNodo(nodo2, nodo1)
 g.addNodo(nodo3, nodo1)
-
-for i in range(g.getSize()):
+g.addNodo(nodo2, nodo3)
     
-    print()
-    x = g.getListaNodi()
-    cont = x[i].getCont()
-    print(cont)
-    y = g.getListeAdiacenza()
-    l = y[i]
-    print()
-
-    for j in range(len(l)):
-        adiacente = l[j]
-        print(adiacente.getCont())
+g.print()

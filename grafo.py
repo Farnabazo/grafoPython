@@ -12,9 +12,16 @@ class Grafo:
 
 
     def addNodo(self, newNodo, oldNodo):
+
+        #siccome il grafo non è orientato, non si possono creare cappi
+
+        if newNodo.isEqual(oldNodo):
+            print("Non puoi collegare un nodo a sé stesso")
+            return
+
         checkNewNodo = False
 
-        #per ogni nodo nella lista, verifico che: il nodo che dovrà essere adiacente al nuovo sia presente (altrimenti il metodo non verra eseguito)
+        #per ogni nodo nella lista, verifico che il nodo che dovrà essere adiacente al nuovo sia presente (altrimenti il metodo non verra eseguito)
         #e che non sia già presente il nuovo nodo
 
         for n in range(len(self.listaNodi)):
@@ -73,3 +80,20 @@ class Grafo:
             x = self.listaNodi[n]
             listeAdiacenza.append(x.getListaAdiacenza())
         return listeAdiacenza
+    
+    #override
+    
+    def print(self):
+
+        for i in range(self.size):
+            print()
+            x = self.listaNodi
+            cont = x[i].getCont()
+            print(cont)
+            y = self.getListeAdiacenza()
+            l = y[i]
+            print()
+
+            for j in range(len(l)):
+                adiacente = l[j]
+                print(adiacente.getCont())
